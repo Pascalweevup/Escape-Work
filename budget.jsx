@@ -219,7 +219,7 @@ const ComparisonView = () => {
                             
                             {/* Honoraires Row */}
                         <tr className="bg-gray-50 border-t-2 border-gray-200">
-                            <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Honoraires Agence (10%)</td>
+                            <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Honoraires Agence</td>
                             {venues.map(venue => (
                                 <td key={`hon-${venue.id}`} className="px-6 py-4 whitespace-nowrap text-right text-gray-600">
                                     {formatEur(venue.honorairesHT)}
@@ -320,7 +320,7 @@ const VenueDetailView = ({ venueId }) => {
                     
                     <div className="bg-gray-50 rounded-lg border border-gray-200 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div>
-                            <h4 className="font-semibold text-gray-900">Honoraires Weever (10%)</h4>
+                            <h4 className="font-semibold text-gray-900">Honoraires Agence</h4>
                             <p className="text-sm text-gray-500">Calculés sur le sous-total HT</p>
                         </div>
                         <div className="text-right">
