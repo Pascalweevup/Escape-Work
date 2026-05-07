@@ -2,137 +2,68 @@ import React, { useState } from 'react';
 
 // --- DATA EXTRACTED FROM PDFs V2 ---
 const budgetData = {
-    bnf: { 
-        id: 'bnf',
-        name: "BNF", 
-        totalTTC: 129807.11, 
-        totalHT: 108265.54, 
-        honorairesHT: 9842.32, 
+    courances: { 
+        id: 'courances',
+        name: "Domaine de Courances", 
+        totalTTC: 46603.07, 
+        totalHT: 38835.89, 
+        honorairesHT: 4160.99, 
         categories: { 
-            lieux: 32768.16, 
-            restauration: 27350.69, 
-            technique: 11521.87, 
-            transports: 7800.00, 
-            extras: 14667.50, 
-            accompagnement: 4315.00 
+            lieux: 15019.20, 
+            restauration: 12069.45, 
+            technique: 0.00, 
+            transports: 0.00, 
+            extras: 7586.25, 
+            accompagnement: 0.00 
         },
         details: {
             lieux: [
-                { desc: "Location de salle ateliers Marriott Rive Gauche (3 salles)", price: 7840.91 },
-                { desc: "Location de salle cérémonie et cocktail BNF", price: 8125.00 },
-                { desc: "Nuitées Marriott Rive Gauche (60 pax)", price: 16295.25 },
-                { desc: "Taxe de séjour Marriott Rive Gauche (60 pax)", price: 507.00 }
+                { desc: "Chambres single (4 nuitées x 12 pers)", price: 9504.00 },
+                { desc: "Taxe de séjour (48 unités)", price: 374.40 },
+                { desc: "Location des salles (Le Fénil et le Loft)", price: 5140.80 }
             ],
             restauration: [
-                { desc: "Déjeuner d'équipe Bistrot Palyma", price: 732.94 },
-                { desc: "Café d'accueil ateliers Marriott Rive Gauche", price: 1023.00 },
-                { desc: "Pause café ateliers Marriott Rive Gauche", price: 1363.50 },
-                { desc: "Cocktail dînatoire - repas Les Retraiteurs", price: 11750.00 },
-                { desc: "Cocktail dînatoire - boissons softs", price: 1050.00 },
-                { desc: "Cocktail dînatoire - boissons alcoolisées", price: 4818.75 },
-                { desc: "Cocktail dînatoire - Mobilier", price: 6612.50 }
-            ],
-            technique: [
-                { desc: "Audiovisuel", price: 7907.50 },
-                { desc: "Forfait mobilier scénique", price: 0.00 },
-                { desc: "Mobilier scénique : étagère trophées", price: 961.87 },
-                { desc: "Agent de sécurité", price: 250.00 },
-                { desc: "Hôtes(ses)", price: 1750.00 },
-                { desc: "Matériel de vestiaire", price: 300.00 },
-                { desc: "Frais de personnel heure de jour", price: 80.00 },
-                { desc: "Frais de personnel heure de nuit", price: 122.50 },
-                { desc: "Transport de matériel", price: 150.00 },
-                { desc: "Infographiste (Option)", price: 600.00 }
-            ],
-            transports: [
-                { desc: "Provision transports", price: 6000.00 },
-                { desc: "Frais de gestion des transports", price: 1800.00 }
+                { desc: "Petit-déjeuners (48 unités)", price: 925.34 },
+                { desc: "Pauses du matin (48 unités)", price: 771.12 },
+                { desc: "Déjeuners (60 unités)", price: 2570.40 },
+                { desc: "Supplément Déjeuner plancha", price: 285.60 },
+                { desc: "Dîners (48 unités)", price: 3290.11 },
+                { desc: "Service traiteur à la journée", price: 4226.88 }
             ],
             extras: [
-                { desc: "Animation - performance Salt & Pepper", price: 10680.00 },
-                { desc: "Animation - caricaturistes", price: 3562.50 },
-                { desc: "Badges", price: 325.00 },
-                { desc: "Création graphique", price: 100.00 },
-                { desc: "Intervention Oldyssey (Option)", price: 2340.00 },
-                { desc: "Cadeaux livres (Option)", price: 1027.00 },
-                { desc: "Sac kraft (Option)", price: 212.50 }
-            ],
-            accompagnement: [
-                { desc: "Temps homme Weever", price: 3600.00 },
-                { desc: "VRH - Restauration", price: 120.00 },
-                { desc: "VHR - Transport", price: 195.00 },
-                { desc: "Frais de repérage", price: 400.00 }
+                { desc: "Atelier parfum d'exception", price: 1963.50 },
+                { desc: "Activité Lego Serious Play®", price: 3153.50 },
+                { desc: "Activité randonnée en forêt", price: 714.00 },
+                { desc: "Animation Casino", price: 1755.25 }
             ]
         }
     },
-    cirque: { 
-        id: 'cirque',
-        name: "Cirque d'Hiver", 
-        totalTTC: 147841.00, 
-        totalHT: 123261.66, 
-        honorairesHT: 11205.61, 
+    homanie: { 
+        id: 'homanie',
+        name: "Homanie Lyons La Forêt", 
+        totalTTC: 38413.20, 
+        totalHT: 32011.00, 
+        honorairesHT: 3429.75, 
         categories: { 
-            lieux: 40191.73, 
-            restauration: 25033.39, 
-            technique: 26352.59, 
-            transports: 7800.00, 
-            extras: 8363.35, 
-            accompagnement: 4315.00 
+            lieux: 20618.75, 
+            restauration: 1650.00, 
+            technique: 0.00, 
+            transports: 0.00, 
+            extras: 6312.50, 
+            accompagnement: 0.00 
         },
         details: {
             lieux: [
-                { desc: "Location de la verrière ateliers (Hôtel Provinces Opéra)", price: 252.08 },
-                { desc: "Location de salles ateliers (4 salles, Hôtel Provinces Opéra)", price: 2016.68 },
-                { desc: "Location de salle cérémonie et cocktail (Cirque d'Hiver)", price: 24200.00 },
-                { desc: "Nuitée Chambre individuelle Confort (14 pax)", price: 3018.37 },
-                { desc: "Nuitée Chambre individuelle Privilège (6 pax)", price: 1352.97 },
-                { desc: "Nuitée Chambre double Confort à usage individuel (40 pax)", price: 9019.82 },
-                { desc: "Taxe de séjour (60 pax)", price: 331.80 }
+                { desc: "Privatisation du lieu (Hébergement, Salles, Restauration)", price: 20618.75 }
             ],
             restauration: [
-                { desc: "Déjeuner d'équipe Hôtel Provinces Opéra", price: 527.98 },
-                { desc: "Café d'accueil ateliers", price: 395.67 },
-                { desc: "Pause gourmande ateliers", price: 659.93 },
-                { desc: "Cocktail dînatoire - repas et softs", price: 10285.00 },
-                { desc: "Cocktail dînatoire - boissons alcoolisées", price: 653.40 },
-                { desc: "Cocktail - matériel et logistique", price: 5033.60 },
-                { desc: "Cocktail - personnel de service", price: 5783.80 },
-                { desc: "Cocktail - champagne", price: 1694.00 },
-                { desc: "Cocktail - ateliers culinaires (Option)", price: 3388.00 }
-            ],
-            technique: [
-                { desc: "Consommation gaz/électricité", price: 605.00 },
-                { desc: "Toiles tendues (Option)", price: 2420.00 },
-                { desc: "Projection sur toiles tendues (Option)", price: 1562.11 },
-                { desc: "Forfait technique sonorisation et lumières", price: 13631.86 },
-                { desc: "Forfait technique vidéo", price: 6688.28 },
-                { desc: "Forfait mobilier scénique", price: 0.00 },
-                { desc: "Mobilier scénique : étagère trophées", price: 961.87 },
-                { desc: "Réseau wifi (Option)", price: 3388.00 },
-                { desc: "Transport de matériel", price: 150.00 },
-                { desc: "Equipe de sécurité", price: 1060.69 },
-                { desc: "Hôtes(ses) vestiaire et accueil", price: 2662.00 },
-                { desc: "Matériel vestiaire", price: 592.90 },
-                { desc: "Infographiste (Option)", price: 600.00 }
-            ],
-            transports: [
-                { desc: "Provision transports", price: 6000.00 },
-                { desc: "Frais de gestion des transports", price: 1800.00 }
+                { desc: "Supplément Dîner gastronomique (12 pers)", price: 1650.00 }
             ],
             extras: [
-                { desc: "Animation numéro de Cirque n°1", price: 3630.00 },
-                { desc: "Animation numéro de Cirque n°2 (Option)", price: 3630.00 },
-                { desc: "Animation groupe musical (Jazz New Orleans)", price: 2420.00 },
-                { desc: "Badges", price: 325.00 },
-                { desc: "Création graphique", price: 100.00 },
-                { desc: "Cadeaux - Cartes à jouer", price: 1675.85 },
-                { desc: "Sac kraft", price: 212.50 }
-            ],
-            accompagnement: [
-                { desc: "Temps homme Weever", price: 3600.00 },
-                { desc: "VRH - Restauration", price: 120.00 },
-                { desc: "VHR - Transport", price: 195.00 },
-                { desc: "Frais de repérage", price: 400.00 }
+                { desc: "Atelier de fabrication de cidre", price: 1375.00 },
+                { desc: "Activité escape game", price: 1375.00 },
+                { desc: "Activité canoë sur l’Eure", price: 2062.50 },
+                { desc: "Animation blind test", price: 1500.00 }
             ]
         }
     }
@@ -448,9 +379,9 @@ export default function App() {
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div>
                             <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-                                <span className="text-yellow-500">☀️</span> Atout Soleil 2026
+                                Escape Work
                             </h1>
-                            <p className="text-sm text-gray-500">Comparateur interactif de propositions événementielles</p>
+                            <p className="text-sm text-gray-500">Comparateur interactif de propositions événementielles pour Escape Work</p>
                         </div>
                         
                         {/* Navigation Tabs */}
